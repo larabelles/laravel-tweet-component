@@ -1,0 +1,54 @@
+{
+    "name": "larabelles/laravel-tweet-component",
+    "type": "library",
+    "description": "",
+    "keywords": [],
+    "homepage": "https://github.com/larabelles/laravel-tweet-component",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Witkowski",
+            "email": "gummibeer@astrotomic.info",
+            "homepage": "https://gummibeer.dev",
+            "role": "Developer"
+        },
+        {
+            "name": "Zuzana Kunckova",
+            "email": "contact@zuzana-k.com",
+            "homepage": "https://zuzana-k.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "illuminate/support": "^7.0 || ^8.0",
+        "illuminate/view": "^7.0 || ^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.0 || ^6.0",
+        "phpunit/phpunit": "^9.3"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Larabelles\\TweetComponent\\TweetComponentServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Larabelles\\TweetComponent\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Larabelles\\TweetComponent\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
