@@ -12,22 +12,17 @@
         <div class="relative bg-white shadow-lg rounded sm:rounded-md p-4 sm:p-6 lg:p-8 space-y-4">
             <header class="flex flex-row items-center space-x-2">
                 <div>
-                    <!-- twitter.user.avatar -->
-                    <img src="/assets/logo.png" class="h-12 sm:h-16 w-12 sm:w-16" alt=" avatar">
+                    <img src="{{ $user->profile_image_url_https }}" class="h-12 sm:h-16 w-12 sm:w-16" alt=" avatar">
                 </div>
                 <div class="flex-grow">
                     <div class="flex flex-row space-x-2">
-                        <!-- twitter.user.name -->
-                        <div class="text-xl text-gray-600 font-bold tracking-wide">Larabelles</div>
-                        <!-- twitter.user.handle -->
-                        <div class="text-gray-400">@LarabellesPHP</div>
+                        <div class="text-xl text-gray-600 font-bold tracking-wide">{{ $user->name }}</div>
+                        <div class="text-gray-400">{{ '@'.$user->screen_name }}</div>
                     </div>
-                    <!-- tweet.date -->
-                    <div class="text-sm text-gray-400">8:39 AM - Feb 12, 2021</div>
+                    <div class="text-sm text-gray-400">{{ \Carbon\Carbon::parse($created_at)->toDayDateTimeString() }}</div>
                 </div>
                 <div>
-                    <!-- tweet.url -->
-                    <a href="#">
+                    <a href="https://twitter.com/{{ $user->screen_name }}/status/{{ $id }}">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                              width="289.984" height="289.984" viewBox="0 0 289.984 289.984" xml:space="preserve" class="h-4 sm:h-6">
 <desc>Created with Fabric.js 1.7.22</desc>
@@ -47,19 +42,13 @@
 
             <main>
                 <p class="overflow-clip overflow-hidden inline">
-                    <!-- tweet.body -->
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque convallis, turpis et
-                    hendrerit viverra, tortor mi imperdiet eros, sit amet tristique nisl ligula vitae magna.
+                    {{ $text }}
                 </p>
-                <!-- tweet.url -->
-                <a class="text-blue-400" href="#">tweet.url</a>
             </main>
 
             <footer class="space-x-4">
-                <!-- tweet.like -->
-                <span class="text-gray-400 text-sm">&#9825; 35</span>
-                <!-- twitter.user.handle -->
-                <span class="text-gray-400 text-sm"><a href="#">&#9733; See LarabellesPHPs other Tweets</a></span>
+                <span class="text-gray-400 text-sm">&#9825; {{ $favorite_count }}</span>
+                <span class="text-gray-400 text-sm"><a href="https://twitter.com/{{ $user->screen_name }}">&#9733; See {{ $user->name }}'s other Tweets</a></span>
             </footer>
         </div>
     </article>

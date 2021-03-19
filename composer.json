@@ -21,6 +21,7 @@
     ],
     "require": {
         "php": "^7.4 || ^8.0",
+        "dg/twitter-php": "^4.1",
         "illuminate/support": "^7.0 || ^8.0",
         "illuminate/view": "^7.0 || ^8.0"
     },

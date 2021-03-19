@@ -9,6 +9,17 @@ use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
 {
+	protected $loadEnvironmentVariables = true;
+
+	protected function resolveApplication()
+	{
+		$app = parent::resolveApplication();
+
+		$app->useEnvironmentPath(__DIR__.'/..');
+
+		return $app;
+	}
+
 	protected function getPackageProviders($app) : array
 	{
 		return [
