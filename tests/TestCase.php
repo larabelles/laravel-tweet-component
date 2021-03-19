@@ -41,4 +41,15 @@ abstract class TestCase extends OrchestraTestCase
 
 		return view(Str::before(basename($tempFile), '.blade.php'), $data)->render();
 	}
+
+	protected function setUp(): void
+	{
+		parent::setUp();
+		config()->set('services.twitter', [
+			'consumer_key' => env('TWITTER_CONSUMER_KEY'),
+			'consumer_secret' => env('TWITTER_CONSUMER_SECRET'),
+			'access_token' => env('TWITTER_ACCESS_TOKEN'),
+			'access_token_secret' => env('TWITTER_ACCESS_TOKEN_SECRET'),
+		]);
+	}
 }

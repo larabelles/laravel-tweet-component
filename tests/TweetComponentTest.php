@@ -2,13 +2,18 @@
 
 namespace Larabelles\TweetComponent\Tests;
 
+use Spatie\Snapshots\MatchesSnapshots;
+
 class TweetComponentTest extends TestCase
 {
+	use MatchesSnapshots;
+
 	/** @test */
 	public function it_renders() : void
 	{
 		$html = $this->blade('<x-tweet id="1372946230783934465" />');
 
-		file_put_contents(__DIR__.'/tweet.html', $html);
+		$this->assertMatchesHtmlSnapshot($html);
+
 	}
 }

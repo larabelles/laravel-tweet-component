@@ -2,6 +2,7 @@
 
 namespace Larabelles\TweetComponent;
 
+use DG\Twitter\Twitter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use Larabelles\TweetComponent\View\Components\Tweet;
@@ -10,7 +11,14 @@ class TweetComponentServiceProvider extends ServiceProvider
 {
 	public function register() : void
 	{
-
+		$this->app->singleton(Twitter::class, function (): Twitter {
+			return new Twitter(
+				config('services.twitter.consumer_key'),
+				config('services.twitter.consumer_secret'),
+				config('services.twitter.access_token'),
+				config('services.twitter.access_token_secret')
+			);
+		});
 	}
 
 	public function boot() : void

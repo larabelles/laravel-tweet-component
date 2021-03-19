@@ -9,10 +9,12 @@ use Illuminate\View\Component;
 class Tweet extends Component
 {
 	protected string $id;
+	protected Twitter $twitter;
 
-	public function __construct(string $id)
+	public function __construct(string $id, Twitter $twitter)
 	{
 		$this->id = $id;
+		$this->twitter = $twitter;
 	}
 
 	public function render() : View
@@ -22,8 +24,6 @@ class Tweet extends Component
 
 	protected function retrieveData() : array
 	{
-		$twitter = new Twitter(env('TWITTER_CONSUMER_KEY'), env('TWITTER_CONSUMER_SECRET'), env('TWITTER_ACCESS_TOKEN'), env('TWITTER_ACCESS_TOKEN_SECRET'));
-
-		return collect($twitter->request("statuses/show/{$this->id}", 'GET'))->dump()->toArray();
+		return collect($this->twitter->request("statuses/show/{$this->id}", 'GET'))->toArray();
 	}
 }
